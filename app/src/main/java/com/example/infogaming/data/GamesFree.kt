@@ -1,17 +1,22 @@
 package com.example.infogaming.data
 
-import com.angel.InfoGaming.R
-import com.google.gson.annotations.SerializedName
 
-class GamesFree (
-    val response: String,
-    val results: List<Superhero>
+
+data class GameResponse (
+    val results: List<Game>
+
 )
 
-class game (
-    val id: String,
+data class Game(
+    val id: Int,
     val title: String,
-    val short_description: description,
-    val work: Work,
-    val appearance: Appearance,
+    val thumbnail: String,
+    val short_description: String,
+    val game_url: String,
+    val genre: String,
+    val platform: String,
+    val publisher: String,
+    val developer: String,
+    val release_date: String,
+    val freetogame_profile_url: String
 )

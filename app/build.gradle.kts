@@ -33,6 +33,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -50,9 +53,9 @@ dependencies {
 
     // agregados por mi
 
-    implementation(libs.retrofit.retrofit)
-    implementation(libs.converter.gson.retrofit)
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
 
-    implementation(libs.picasso.picasso)
+    implementation (libs.picasso)
 
 }
