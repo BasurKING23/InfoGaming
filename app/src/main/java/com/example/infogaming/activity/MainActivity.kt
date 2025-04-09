@@ -11,7 +11,7 @@ import com.example.infogaming.R
 import com.example.infogaming.adapter.Gamesadapter
 import com.example.infogaming.data.Game
 import com.example.infogaming.data.GamesServices
-import com.example.infogaming.databinding.ActivityMainBinding
+import com.example.infogaming.databinding.ActivityDetailsBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MainActivity : AppCompatActivity() {
 
     lateinit var adapter: Gamesadapter
-    lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivityDetailsBinding
     var gamelist: List<Game> = listOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
 
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->

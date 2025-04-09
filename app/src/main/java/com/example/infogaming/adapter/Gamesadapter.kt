@@ -30,7 +30,9 @@ class Gamesadapter(var items: List<Game>, val onClick: (Int) -> Unit) : Adapter<
 class GamesfreeViewHolder(val binding: ItemGamesBinding) : ViewHolder(binding.root) {
 
     fun render(videogames: Game) {
+
         binding.nameVideogameTextView.text = videogames.title
+
         Picasso.get()
             .load(videogames.thumbnail)
             .into(binding.gameImageView)
