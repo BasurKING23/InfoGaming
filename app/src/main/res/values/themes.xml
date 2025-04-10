@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.InfoGaming" parent="Base.Theme.InfoGaming" />
+
+    <style name="Theme.InfoGaming.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.InfoGaming.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

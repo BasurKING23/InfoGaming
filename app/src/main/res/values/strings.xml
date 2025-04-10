@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">InfoGaming</string>
+    <string name="Free_Games">Free Games</string>
+    <string name="Free_Game_Deals">Free Game Deals</string>
+    <string name="Newsletter_Subscription">Newsletter Subscription</string>
+    <string name="newsletter_subscription">Newsletter_Subscription</string>
+    <string name="Title">InfoGaming</string>
 </resources>
