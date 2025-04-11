@@ -2,39 +2,36 @@ package com.example.infogaming.activity.free_games
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.RecyclerView
 import com.example.infogaming.data.Game
 import com.example.infogaming.databinding.ItemGamesBinding
 import com.squareup.picasso.Picasso
 
 
-class Gamesadapter(var items: List<Game>, val onClick: (Int) -> Unit) : Adapter<GamesfreeViewHolder>() {
+class GamesAdapter(var items: List<Game>, val onClick: (Any) -> Unit) : RecyclerView.Adapter<GamesAdapter.GamesViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GamesfreeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GamesViewHolder {
         val binding = ItemGamesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return GamesfreeViewHolder(binding)
+        return GamesViewHolder(binding)
     }
 
     override fun getItemCount(): Int = items.size
 
-    override fun onBindViewHolder(holder: GamesfreeViewHolder, position: Int) {
-        val id = items[position]
-        holder.render(id)
+    override fun onBindViewHolder(holder: GamesViewHolder, position: Int) {
+        val game = items[position]
+        holder.bind(game)
         holder.itemView.setOnClickListener {
-            onClick(position)
+//            onClick(position)
         }
     }
-}
 
-class GamesfreeViewHolder(val binding: ItemGamesBinding) : ViewHolder(binding.root) {
+    class GamesViewHolder(private val binding: ItemGamesBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    fun render(videogames: Game) {
-
-        binding.nameVideogameTextView.text = videogames.title
-
-        Picasso.get()
-            .load(videogames.thumbnail)
-            .into(binding.gameImageView)
+        fun bind(game: Game) {
+            binding.nameVideogameTextView.text = game.title
+            Picasso.get()
+                .load(game.thumbnail)
+                .into(binding.gameImageView)
+        }
     }
 }

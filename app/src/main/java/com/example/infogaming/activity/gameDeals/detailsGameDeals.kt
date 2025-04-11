@@ -21,7 +21,7 @@ class FreeGamesDealsFragment : Fragment() {
         binding = FreeGameDealsBinding.inflate(inflater, container, false)
 
         // Modifica el texto del TextView en el layout
-        binding.textHome.text = "Prueba Free Game Deals"
+        binding.textfreegamesdeal.text
 
         return binding.root
     }

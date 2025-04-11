@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/nav_free_games"
         android:label="@string/Free_Games"
-        android:name="com.example.infogaming.activity.free_games.DetailsFragmentFreeGames"
+        android:name="com.example.infogaming.activity.free_games.FreeGames"
         tools:layout="@layout/free_games"/>
 
     <fragment
@@ -20,7 +20,7 @@
 
     <fragment
         android:id="@+id/nav_newsletter_subscription"
-        android:label="@string/newsletter_subscription"
+        android:label="@string/Newsletter_Subscription"
         android:name="com.example.infogaming.activity.newsletter.NewsletterFragment"
         tools:layout="@layout/newsletter"/>
 </navigation>

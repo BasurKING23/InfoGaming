@@ -5,10 +5,10 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textHome"
+        android:id="@+id/textfreegamesdeal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/Free_Game_Deals"
+        android:text="prueba de que sirve"
         android:gravity="center"
         android:textSize="40sp"
         android:textColor="#F40000"/>
