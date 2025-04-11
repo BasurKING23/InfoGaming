@@ -12,7 +12,7 @@
             android:id="@+id/nav_free_games_deals"
             android:title="@string/Free_Game_Deals" />
         <item
-            android:id="@+id/nav_newsletter"
+            android:id="@+id/nav_newsletter_subscription"
             android:title="@string/Newsletter_Subscription" />
     </group>
 </menu>

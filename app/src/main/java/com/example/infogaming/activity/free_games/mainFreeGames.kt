@@ -1,54 +1,58 @@
-package com.example.infogaming.activity
-
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.infogaming.R
-import com.example.infogaming.adapter.Gamesadapter
+import com.example.infogaming.activity.free_games.DetailsFragmentFreeGames
+import com.example.infogaming.activity.free_games.Gamesadapter
 import com.example.infogaming.data.Game
 import com.example.infogaming.data.GamesServices
+import com.example.infogaming.databinding.FreeGamesBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainActivity : AppCompatActivity() {
+class FreeGamesFragment : Fragment() {
 
     lateinit var adapter: Gamesadapter
-    lateinit var binding: FragmentfreeGamesBinding
+    lateinit var binding: FreeGamesBinding
     var gamelist: List<Game> = listOf()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflar el layout del fragmento
+        binding = FreeGamesBinding.inflate(inflater, container, false)
 
-
-        binding = FragmentfreeGamesBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
-
-        loadGames()
-
+        // Configurar RecyclerView
         adapter = Gamesadapter(gamelist) { position ->
             val game = gamelist[position]
 
-            val intent = Intent(this, FreeGames::class.java)
+            // Manejar el clic en el ítem, aquí se puede pasar el id del juego al fragmento o a otra activity
+            val intent = Intent(activity, DetailsFragmentFreeGames::class.java) // o puedes pasar al mismo Fragment
             intent.putExtra("GAME_ID", game.id)
             startActivity(intent)
         }
+
         binding.recyclerView.adapter = adapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+
+        // Cargar los juegos desde la API
+        loadGames()
+
+        return binding.root
     }
+
     fun getRetrofit(): GamesServices {
         val retrofit = Retrofit.Builder()
             .baseUrl("https://www.freetogame.com/api/")
@@ -57,6 +61,7 @@ class MainActivity : AppCompatActivity() {
 
         return retrofit.create(GamesServices::class.java)
     }
+
     fun loadGames() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -73,5 +78,8 @@ class MainActivity : AppCompatActivity() {
                 e.printStackTrace()
             }
         }
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
     }
 }

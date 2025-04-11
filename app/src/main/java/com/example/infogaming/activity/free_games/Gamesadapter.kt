@@ -1,4 +1,4 @@
-package com.example.infogaming.adapter
+package com.example.infogaming.activity.free_games
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
