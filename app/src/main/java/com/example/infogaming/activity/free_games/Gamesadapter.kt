@@ -21,7 +21,7 @@ class GamesAdapter(var items: List<Game>, val onClick: (Any) -> Unit) : Recycler
         val game = items[position]
         holder.bind(game)
         holder.itemView.setOnClickListener {
-//            onClick(position)
+            onClick(position)
         }
     }
 
@@ -34,4 +34,5 @@ class GamesAdapter(var items: List<Game>, val onClick: (Any) -> Unit) : Recycler
                 .into(binding.gameImageView)
         }
     }
+
 }

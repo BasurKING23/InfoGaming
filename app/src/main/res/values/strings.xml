@@ -4,4 +4,9 @@
     <string name="Free_Game_Deals">Free Game Deals</string>
     <string name="Newsletter_Subscription">Newsletter Subscription</string>
     <string name="Title">InfoGaming</string>
+    <string name="Titlegame">Title Game</string>
+    <string name="genre">genre</string>
+    <string name="platform">platform</string>
+    <string name="publisher">publisher</string>
+    <string name="button_get_game">Get Game</string>
 </resources>
