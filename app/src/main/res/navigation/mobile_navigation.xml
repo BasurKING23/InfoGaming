@@ -21,6 +21,6 @@
     <fragment
         android:id="@+id/nav_newsletter_subscription"
         android:label="@string/Newsletter_Subscription"
-        android:name="com.example.infogaming.activity.newsletter.NewsletterFragment"
-        tools:layout="@layout/newsletter"/>
+        android:name="com.example.infogaming.activity.newsletter.Newsletter"
+        tools:layout="@layout/newsletters"/>
 </navigation>

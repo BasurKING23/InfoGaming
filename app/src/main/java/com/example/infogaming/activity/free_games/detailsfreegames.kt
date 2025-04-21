@@ -1,5 +1,6 @@
 package com.example.infogaming.activity.free_games
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -25,9 +26,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 class FreeGames : Fragment() {
     private lateinit var binding: FreeGamesBinding
     private lateinit var adapter: GamesAdapter
-    private var gamelist = listOf<Game>()
+    private var Game = listOf<Game>()
 
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -60,7 +62,7 @@ class FreeGames : Fragment() {
                 val service = getRetrofit()
                 val result = service.getAllGames()
                 Log.d("FreeGames", "Games loaded: ${result.size}")
-                gamelist = result
+                Game = result
 
 
                 // Regresamos al hilo principal
@@ -68,12 +70,12 @@ class FreeGames : Fragment() {
                     binding.progressIndicator.visibility = View.GONE
 
                     // Verifica si la lista de juegos no está vacía
-                    adapter = GamesAdapter(gamelist) { position ->
-                        val game = gamelist[position as Int]
+                    adapter = GamesAdapter(Game) { position ->
+                        val game = Game[position as Int]
                     }
 
-                    adapter = GamesAdapter(gamelist) { selectedGame ->
-                        val game = gamelist[selectedGame as Int]
+                    adapter = GamesAdapter(Game) { selectedGame ->
+                        val game = Game[selectedGame as Int]
                         val intent = Intent(requireActivity(), GameDetailActivity::class.java)
                         intent.putExtra("GAME_ID", game.id)
                         startActivity(intent)
@@ -81,8 +83,6 @@ class FreeGames : Fragment() {
                     binding.recyclerView.adapter = adapter
                     adapter.notifyDataSetChanged()
 
-
-                    Log.d("FreeGames", "Adapter set with ${gamelist.size} items.")
                 }
             } catch (e: Exception) {
                 e.printStackTrace()

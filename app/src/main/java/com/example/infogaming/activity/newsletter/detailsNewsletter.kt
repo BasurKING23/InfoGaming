@@ -1,34 +1,86 @@
-package com.example.infogaming.activity.newsletter
+package com.example.infogaming.activity.free_games
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.infogaming.databinding.FreeGameDealsBinding
-import com.example.infogaming.databinding.NewsletterBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.infogaming.activity.newsletter.newsletterAdapter
+import com.example.infogaming.data.Article
+import com.example.infogaming.data.newsServices
+import com.example.infogaming.databinding.NewslettersBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-class NewsletterFragment : Fragment() {
+class Newsletter : Fragment() {
+    private lateinit var binding: NewslettersBinding
+    private lateinit var adapter: newsletterAdapter
+    private var articlelist = listOf<Article>()
 
-    // Utiliza el nombre de la clase de binding generada (en este caso, FragmentNewsletterBinding)
-    lateinit var binding: NewsletterBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Infla el layout usando el nombre correcto de la clase de binding
-        binding = NewsletterBinding.inflate(inflater, container, false)
+    ): View {
+        binding = NewslettersBinding.inflate(inflater, container, false)
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
 
-        // Aquí se usa el binding para acceder a las vistas
-        binding.newsletter.text = "Texto del fragmento"
+        // Llama a loadGames() para obtener los datos
+        loadGames()
 
-        return binding.root // Devuelve la raíz de la vista inflada
+        return binding.root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    fun getRetrofit(): newsServices {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://newsapi.org/v2/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        return retrofit.create(newsServices::class.java)
+    }
+
+    fun loadGames() {
+        CoroutineScope(Dispatchers.Main).launch {
+            binding.progressIndicator.visibility = View.VISIBLE
+        }
+
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val service = getRetrofit()
+                val result = service.getAllNews()
+                articlelist = listOf(result)
+
+
+                // Regresamos al hilo principal
+                CoroutineScope(Dispatchers.Main).launch {
+                    binding.progressIndicator.visibility = View.GONE
+
+                    // Verifica si la lista de juegos no está vacía
+                    adapter = newsletterAdapter(articlelist)
+
+                    adapter = newsletterAdapter(articlelist) {
+                        val game = articlelist
+                        val intent = Intent(requireActivity(), Newsletter::class.java)
+                        intent.putExtra("NEWS_TITLE", game.title)
+                        startActivity(intent)
+                    }
+                    binding.recyclerView.adapter = adapter
+                    adapter.notifyDataSetChanged()
+
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+                CoroutineScope(Dispatchers.Main).launch {
+                    binding.progressIndicator.visibility = View.GONE
+                }
+            }
+        }
     }
 }
 
