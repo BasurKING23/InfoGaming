@@ -59,7 +59,8 @@
                 android:layout_height="wrap_content"
                 android:text="Leer artículo completo"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="24dp"/>
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/buttonbk"/>
 
         </LinearLayout>
     </ScrollView>
