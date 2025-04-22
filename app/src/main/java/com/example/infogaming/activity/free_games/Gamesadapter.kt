@@ -29,9 +29,7 @@ class GamesAdapter(var items: List<Game>, val onClick: (Any) -> Unit) : Recycler
 
         fun bind(game: Game) {
             binding.nameVideogameTextView.text = game.title
-            Picasso.get()
-                .load(game.thumbnail)
-                .into(binding.gameImageView)
+            Picasso.get().load(game.thumbnail).into(binding.gameImageView)
         }
     }
 

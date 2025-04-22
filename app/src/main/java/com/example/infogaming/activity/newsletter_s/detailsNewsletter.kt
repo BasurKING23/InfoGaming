@@ -1,4 +1,4 @@
-package com.example.infogaming.activity.free_games
+package com.example.infogaming.activity.new
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.infogaming.activity.newsletter.newsletterAdapter
+import com.example.infogaming.activity.newsletter_s.Newsletter
+import com.example.infogaming.activity.newsletter_s.NewsletterAdapter
 import com.example.infogaming.data.Article
 import com.example.infogaming.data.newsServices
 import com.example.infogaming.databinding.NewslettersBinding
@@ -17,11 +18,10 @@ import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class Newsletter : Fragment() {
+class Newsletters : Fragment() {
     private lateinit var binding: NewslettersBinding
-    private lateinit var adapter: newsletterAdapter
+    private lateinit var adapter: NewsletterAdapter
     private var articlelist = listOf<Article>()
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,26 +54,22 @@ class Newsletter : Fragment() {
             try {
                 val service = getRetrofit()
                 val result = service.getAllNews()
-                articlelist = listOf(result)
+                articlelist = result.articles
 
-
-                // Regresamos al hilo principal
                 CoroutineScope(Dispatchers.Main).launch {
                     binding.progressIndicator.visibility = View.GONE
 
-                    // Verifica si la lista de juegos no está vacía
-                    adapter = newsletterAdapter(articlelist)
-
-                    adapter = newsletterAdapter(articlelist) {
-                        val game = articlelist
+                    // Cambié la lambda a recibir el objeto Article
+                    adapter = NewsletterAdapter(articlelist) { article ->
                         val intent = Intent(requireActivity(), Newsletter::class.java)
-                        intent.putExtra("NEWS_TITLE", game.title)
+                        intent.putExtra("NEWS_TITLE", article.title)
                         startActivity(intent)
                     }
+
                     binding.recyclerView.adapter = adapter
                     adapter.notifyDataSetChanged()
-
                 }
+
             } catch (e: Exception) {
                 e.printStackTrace()
                 CoroutineScope(Dispatchers.Main).launch {
@@ -83,5 +79,6 @@ class Newsletter : Fragment() {
         }
     }
 }
+
 
 

@@ -1,8 +1,7 @@
-package com.example.infogaming
+package com.example.infogaming.activity.free_games
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.infogaming.data.GamesServices
@@ -14,7 +13,6 @@ import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import androidx.core.net.toUri
-import com.example.infogaming.data.Game
 
 class GameDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding // Aquí está la referencia al ViewBinding

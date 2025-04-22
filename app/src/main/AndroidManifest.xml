@@ -14,7 +14,7 @@
         android:theme="@style/Theme.InfoGaming"
         tools:targetApi="31">
         <activity
-            android:name=".GameDetailActivity"
+            android:name=".activity.free_games.GameDetailActivity"
             android:exported="false"
             tools:ignore="MissingClass" />
 
