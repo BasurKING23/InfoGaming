@@ -55,7 +55,7 @@ class Newsletter : Fragment() {
             try {
                 val service = getRetrofit()
                 val result = service.getAllNews() // Esto debería devolver una respuesta con artículos
-                articleList = Article //
+                //articleList = Article //
 
                 // Regresamos al hilo principal
                 CoroutineScope(Dispatchers.Main).launch {
@@ -63,7 +63,7 @@ class Newsletter : Fragment() {
 
                     // Verifica si la lista de artículos no está vacía
                     adapter = NewsletterAdapter(articleList) { position ->
-                        val article = articleList[position]
+                        //val article = articleList[position]
                         // Si necesitas realizar algo con el artículo, puedes hacerlo aquí
                     }
 
