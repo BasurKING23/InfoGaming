@@ -1,4 +1,4 @@
-package com.example.infogaming.activity.new
+package com.example.infogaming.activity.newsletter_s
 
 import android.content.Intent
 import android.os.Bundle
