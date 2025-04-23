@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">InfoGaming</string>
+    <string name="Free_Games">Juegos Gratis</string>
+    <string name="Free_Game_Deals">Juegos Gratis en Promoción</string>
+    <string name="Newsletter_Subscription">Suscribirse a la Newsletter</string>
+    <string name="Title">InfoGaming</string>
+    <string name="Titlegame">Titulo del Juego</string>
+    <string name="genre">Genero</string>
+    <string name="platform">Plataforma</string>
+    <string name="publisher">Desarrollador</string>
+    <string name="button_get_game">Obtener Juego</string>
+    <string name="description">Descripcion</string>
+    <string name="articleall">Leer articulo</string>
+    <string name="toast_article_opened">No se encontro el articulo</string>
+    <string name="dialog_title_with_game">Vas a abrir este juego</string>
+    <string name="dialog_message">Desea abrir este juego?</string>
+    <string name="dialog_title_with_news">Vas a abrir esta noticia</string>
+    <string name="dialog_message_news">desea abrir esta noticia?</string>
+</resources>

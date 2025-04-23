@@ -2,8 +2,12 @@ package com.example.infogaming.activity.free_games
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.example.infogaming.R
 import com.example.infogaming.data.GamesServices
 import com.example.infogaming.databinding.ActivityDetailsBinding
 import com.squareup.picasso.Picasso
@@ -12,7 +16,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import androidx.core.net.toUri
 
 class GameDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsBinding // Aquí está la referencia al ViewBinding
@@ -57,9 +60,22 @@ class GameDetailActivity : AppCompatActivity() {
                     binding.publisherTextView.text = gameDetails.publisher
                     binding.buttonGetGame.setOnClickListener {
                         val url = gameDetails.game_url
-                        val intent = Intent(Intent.ACTION_VIEW)
-                        intent.data = url.toUri()
-                        startActivity(intent)
+
+                        if (!url.isNullOrEmpty()) {
+                            AlertDialog.Builder(this@GameDetailActivity)
+                                .setTitle("Abrir juego")
+                                .setMessage("¿Deseas abrir el juego en el navegador?")
+                                .setPositiveButton("Sí") { _, _ ->
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                                    startActivity(intent)
+                                }
+                                .setNegativeButton("Cancelar", null)
+                                .show()
+                        } else {
+                            val message = getString(R.string.toast_article_opened)
+                            Toast.makeText(this@GameDetailActivity,message, Toast.LENGTH_SHORT).show()
+                        }
+
                     }
                 }
             } catch (e: Exception) {

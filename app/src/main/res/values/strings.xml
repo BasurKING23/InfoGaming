@@ -10,4 +10,10 @@
     <string name="publisher">publisher</string>
     <string name="button_get_game">Get Game</string>
     <string name="description">Description</string>
+    <string name="articleall">Read News</string>
+    <string name="toast_article_opened">Not found article</string>
+    <string name="dialog_title_with_game">Opened this Game</string>
+    <string name="dialog_message">Do you want to open this game?</string>
+    <string name="dialog_title_with_news">Opened this news</string>
+    <string name="dialog_message_news">Do you want to open this news?</string>
 </resources>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primary">#1F2041</color>
+    <color name="primary">#0118D8</color>
     <color name="secondary">#0077B6</color>
-    <color name="text1">#1F2041</color>
-    <color name="text2">#D5DFE5</color>
+    <color name="text1">#FFF8F8</color>
+    <color name="text2">#E9DFC3</color>
     <color name="buttonbk">#A22C29</color>
-    <color name="title">#DBD053</color>
+    <color name="title">#1B56FD</color>
 </resources>

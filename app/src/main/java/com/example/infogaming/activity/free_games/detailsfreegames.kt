@@ -48,9 +48,7 @@ class FreeGames : Fragment() {
     }
 
     fun loadGames() {
-        CoroutineScope(Dispatchers.Main).launch {
             binding.progressIndicator.visibility = View.VISIBLE
-        }
 
         CoroutineScope(Dispatchers.IO).launch {
             try {
