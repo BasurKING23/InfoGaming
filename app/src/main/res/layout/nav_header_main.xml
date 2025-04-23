@@ -12,12 +12,24 @@ android:paddingRight="16dp"
 android:paddingBottom="16dp"
 android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
+
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="8dp"
+    android:paddingTop="16dp"
+    android:textStyle="bold"
     android:text="@string/Title"
     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
     android:textSize="22sp"/>
+
+    <TextView
+        android:id="@+id/nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="12dp"
+        android:text="@string/NickName"
+        android:textStyle="italic"
+        android:textSize="16sp"/>
+
 
 </LinearLayout>

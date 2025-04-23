@@ -16,4 +16,7 @@
     <string name="dialog_message">Do you want to open this game?</string>
     <string name="dialog_title_with_news">Opened this news</string>
     <string name="dialog_message_news">Do you want to open this news?</string>
+    <string name="user">User</string>
+    <string name="Save">Save NickName</string>
+    <string name="NickName">Nickname</string>
 </resources>

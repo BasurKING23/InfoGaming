@@ -2,6 +2,7 @@ package com.example.infogaming
 
 import android.os.Bundle
 import android.view.Menu
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
@@ -37,6 +38,11 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        val nicknameTextView: TextView = binding.navView.getHeaderView(0).findViewById(R.id.nickname)
+        val sharedPrefs = getSharedPreferences("prefs", 0)
+        val nickname = sharedPrefs.getString("usuario_guardado", "")
+        nicknameTextView.text = nickname
     }
 
 //    override fun onCreateOptionsMenu(menu: Menu): Boolean {

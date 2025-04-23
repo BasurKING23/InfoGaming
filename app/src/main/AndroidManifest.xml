@@ -16,7 +16,7 @@
         <activity
             android:name=".activity.free_games.GameDetailActivity"
             android:exported="false"
-            tools:ignore="MissingClass" />
+            android:theme="@style/Theme.InfoGaming.NoActionBar"/>
 
         <activity
             android:name=".MainActivity"

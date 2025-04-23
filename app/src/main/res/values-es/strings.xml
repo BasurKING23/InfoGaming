@@ -17,4 +17,7 @@
     <string name="dialog_message">Desea abrir este juego?</string>
     <string name="dialog_title_with_news">Vas a abrir esta noticia</string>
     <string name="dialog_message_news">desea abrir esta noticia?</string>
+    <string name="user">Usuario</string>
+    <string name="Save">Guardar Apodo</string>
+    <string name="NickName">Apodo</string>
 </resources>
