@@ -1,4 +1,4 @@
-package com.example.infogaming.activity.newsletter_s
+package com.example.infogaming.adapter
 
 import android.app.AlertDialog
 import android.content.Intent
