@@ -44,3 +44,15 @@ data class Source(
     val id: String?,
     val name: String
 )
+
+data class YouTubeSearchResponse(
+    val items: List<VideoItem>
+)
+
+data class VideoItem(
+    val id: VideoId
+)
+
+data class VideoId(
+    val videoId: String
+)
